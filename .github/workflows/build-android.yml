@@ -23,11 +23,12 @@ jobs:
 
       # Compila e assina o APK
       - name: Build release APK
-        run: ./gradlew assembleRelease \
-          -Pandroid.injected.signing.store.file=release.keystore \
-          -Pandroid.injected.signing.store.password=${{ secrets.KEYSTORE_PASSWORD }} \
-          -Pandroid.injected.signing.key.alias=minha-chave \
-          -Pandroid.injected.signing.key.password=${{ secrets.KEY_PASSWORD }}
+        run: |
+          ./gradlew assembleRelease \
+            -Pandroid.injected.signing.store.file=release.keystore \
+            -Pandroid.injected.signing.store.password=${{ secrets.KEYSTORE_PASSWORD }} \
+            -Pandroid.injected.signing.key.alias=minha-chave \
+            -Pandroid.injected.signing.key.password=${{ secrets.KEY_PASSWORD }}
 
       # Salva o APK como artefato para download
       - name: Upload release APK
